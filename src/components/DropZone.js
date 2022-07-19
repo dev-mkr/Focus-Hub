@@ -1,4 +1,11 @@
-const DropZone = ({ index, columnId, itemsOrder, setItemsOrder }) => {
+const DropZone = ({
+  index,
+  columnId,
+  itemsOrder,
+  setItemsOrder,
+  globalState,
+  setGlobalState,
+}) => {
   const handelDragEnter = (e) => {
     e.preventDefault();
     e.target.classList.add("board-dropzone-active");
@@ -25,6 +32,9 @@ const DropZone = ({ index, columnId, itemsOrder, setItemsOrder }) => {
       console.log(newItemsOrder);
       setItemsOrder(newItemsOrder);
     }
+
+    console.log(globalState.columns[targetColumnId].taskIds);
+    console.log(globalState.columns[columnId].taskIds);
   };
   return (
     <span

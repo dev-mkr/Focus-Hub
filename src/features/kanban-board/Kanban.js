@@ -57,6 +57,8 @@ function Kanban(props) {
             tasks={globalState.tasks}
             taskIds={column.taskIds}
             index={index}
+            setGlobalState={setGlobalState}
+            globalState={globalState}
           />
         );
       })}

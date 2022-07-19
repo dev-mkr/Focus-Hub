@@ -3,7 +3,14 @@ import Draggable from "../../../components/Draggable";
 import DropZone from "../../../components/DropZone";
 import Task from "./Task";
 
-const Column = ({ column, tasks, index, taskIds }) => {
+const Column = ({
+  column,
+  tasks,
+  index,
+  taskIds,
+  globalState,
+  setGlobalState,
+}) => {
   const [itemsOrder, setItemsOrder] = useState(taskIds);
 
   const columnTasks = itemsOrder.map((taskId) => tasks[taskId]);
@@ -19,6 +26,8 @@ const Column = ({ column, tasks, index, taskIds }) => {
           taskId={task.id}
           itemsOrder={itemsOrder}
           setItemsOrder={setItemsOrder}
+          setGlobalState={setGlobalState}
+          globalState={globalState}
         >
           <Task content={task.content} />
         </Draggable>
@@ -28,6 +37,8 @@ const Column = ({ column, tasks, index, taskIds }) => {
         columnId={column.id}
         itemsOrder={itemsOrder}
         setItemsOrder={setItemsOrder}
+        setGlobalState={setGlobalState}
+        globalState={globalState}
       />
     </div>
   );

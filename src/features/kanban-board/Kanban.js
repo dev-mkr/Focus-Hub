@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import Column from "./components/Column";
+import Draggable from "../../components/Draggable";
+import DropZone from "../../components/DropZone";
+import Task from "./components/Task";
 // const initialData = { tasks: {}, columns: {}, columnOrder: [] };
 const initialData = {
   tasks: {
@@ -46,20 +49,36 @@ function Kanban(props) {
     <div className="board">
       {globalState.columnOrder.map((columnId, index) => {
         const column = globalState.columns[columnId];
-        {
-          /* const tasks = column.taskIds.map((taskId) => globalState.tasks[taskId]); */
-        }
+        const tasks = column.taskIds.map((taskId) => globalState.tasks[taskId]);
 
         return (
           <Column
             key={column.id}
             column={column}
-            tasks={globalState.tasks}
-            taskIds={column.taskIds}
             index={index}
             setGlobalState={setGlobalState}
             globalState={globalState}
-          />
+          >
+            <h3 className="column-title">{column.title}</h3>{" "}
+            <DropZone
+              index={0}
+              columnId={column.id}
+              setGlobalState={setGlobalState}
+              globalState={globalState}
+            />
+            {tasks.map((task, index) => (
+              <Draggable
+                key={task.id}
+                index={index}
+                columnId={column.id}
+                taskId={task.id}
+                setGlobalState={setGlobalState}
+                globalState={globalState}
+              >
+                <Task content={task.content} />
+              </Draggable>
+            ))}
+          </Column>
         );
       })}
     </div>

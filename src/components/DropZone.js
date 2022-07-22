@@ -9,6 +9,7 @@ const DropZone = ({
   const handelDragEnter = (e) => {
     e.preventDefault();
     e.target.classList.add("board-dropzone-active");
+    return false;
   };
 
   const handleDragLeave = (e) => {
@@ -24,22 +25,39 @@ const DropZone = ({
 
     e.target.classList.remove("board-dropzone-active");
     // console.log(targetIndex, targetColumnId);
-    console.log(itemsOrder);
+    // console.log(itemsOrder);
     if (columnId === targetColumnId) {
-      let newItemsOrder = Array.from(itemsOrder);
-      newItemsOrder.splice(+index, 1);
-      newItemsOrder.splice(targetIndex, 0, taskId);
-      console.log(newItemsOrder);
-      setItemsOrder(newItemsOrder);
+      // let newItemsOrder = Array.from(itemsOrder);
+      // newItemsOrder.splice(+index, 1);
+      // newItemsOrder.splice(targetIndex, 0, taskId);
+      // console.log(newItemsOrder);
+      // setItemsOrder(newItemsOrder);
     }
+    const start = globalState.columns[columnId];
+    const finish = globalState.columns[targetColumnId];
 
-    console.log(globalState.columns[targetColumnId].taskIds);
+    const newTaskIds = Array.from(start.taskIds);
+    newTaskIds.splice(+index, 1);
+    newTaskIds.splice(targetIndex, 0, taskId);
+    const newColumn = {
+      ...start,
+      taskIds: newTaskIds,
+    };
+    setGlobalState({
+      ...globalState,
+      columns: {
+        ...globalState.columns,
+        [columnId]: newColumn,
+      },
+    });
+
     console.log(globalState.columns[columnId].taskIds);
   };
   return (
     <span
       className="board-dropzone"
       onDragOver={(e) => handelDragEnter(e)}
+      // onDragEnter={(e) => handelDragEnter(e)}
       onDragLeave={(e) => handleDragLeave(e)}
       onDrop={(e) => handleDrop(e, index, columnId)}
     ></span>

@@ -1,13 +1,38 @@
-import { useState } from "react";
-import Draggable from "../../../components/Draggable";
-import DropZone from "../../../components/DropZone";
-import Task from "./Task";
+import React from "react";
+import { Droppable, Draggable } from "react-beautiful-dnd";
+import { AddNewTask } from "./AddNewTask";
+import ColumnTitle from "./ColumnTitle";
+import { DeleteColumns } from "./DeleteColumns";
 
-const Column = ({ children }) => {
-  // const [itemsOrder, setItemsOrder] = useState(taskIds);
+const Column = ({ columnId, columnTitle, index, children, dispatch }) => {
+  return (
+    <Draggable draggableId={columnId} index={index}>
+      {(provided) => (
+        <div {...provided.draggableProps} ref={provided.innerRef}>
+          <header
+            {...provided.dragHandleProps}
+            onMouseDown={(e) => e.currentTarget.focus()}
+          >
+            <ColumnTitle
+              columnTitle={columnTitle}
+              dispatch={dispatch}
+              columnId={columnId}
+            />
+            <AddNewTask dispatch={dispatch} columnId={columnId} />
+            <DeleteColumns dispatch={dispatch} columnId={columnId} index={index} />
+          </header>
 
-  // const columnTasks = itemsOrder.map((taskId) => tasks[taskId]);
-  //try to use children pattern with context
-  return <div>{children}</div>;
+          <Droppable droppableId={columnId}>
+            {(provided) => (
+              <div {...provided.droppableProps} ref={provided.innerRef}>
+                {children}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </div>
+      )}
+    </Draggable>
+  );
 };
 export default Column;

@@ -1,9 +1,11 @@
 import "./assets/App.css";
-import Kanban from "./features/kanban-board/Kanban.js";
+import React from "react";
+
+import Home from "./pages/Home";
 function App() {
   return (
     <div className="App">
-      <Kanban />
+      <Home />
     </div>
   );
 }

@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  transition: all 0.5s;
 }
 .App {
   text-align: center;
@@ -47,9 +46,9 @@
   align-items: flex-start;
   padding: 8px;
   flex-wrap: wrap;
-  width: 940px;
+  width: 100%;
   height: 100vh;
-
+  gap: 10px;
   background: #f8f8f8;
   border-radius: 12px;
 }
@@ -58,7 +57,18 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  /* gap: 5px; */
+  margin-bottom: 5px;
 }
+.board div header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.board div header:focus {
+  outline: none;
+}
+
 .board-dropzone {
   height: 5px;
   /* transition: height 0.15s; */
@@ -96,8 +106,12 @@ p {
   margin: 0;
   padding: 16px;
   width: 100%;
+  min-height: 53px;
   text-align: start;
+  border-radius: 8px;
 }
 p:focus {
   outline: none;
+
+  box-shadow: 0 0 10px 5px #c5c5c5a3;
 }

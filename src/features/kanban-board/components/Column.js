@@ -1,26 +1,19 @@
 import React from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
-import { AddNewTask } from "./AddNewTask";
-import ColumnTitle from "./ColumnTitle";
-import { DeleteColumns } from "./DeleteColumns";
 
+import ColumnHeader from "./ColumnHeader";
 const Column = ({ columnId, columnTitle, index, children, dispatch }) => {
   return (
     <Draggable draggableId={columnId} index={index}>
       {(provided) => (
         <div {...provided.draggableProps} ref={provided.innerRef}>
-          <header
-            {...provided.dragHandleProps}
-            onMouseDown={(e) => e.currentTarget.focus()}
-          >
-            <ColumnTitle
-              columnTitle={columnTitle}
-              dispatch={dispatch}
-              columnId={columnId}
-            />
-            <AddNewTask dispatch={dispatch} columnId={columnId} />
-            <DeleteColumns dispatch={dispatch} columnId={columnId} index={index} />
-          </header>
+          <ColumnHeader
+            dragHandleProps={provided.dragHandleProps}
+            columnTitle={columnTitle}
+            dispatch={dispatch}
+            columnId={columnId}
+            index={index}
+          />
 
           <Droppable droppableId={columnId}>
             {(provided) => (

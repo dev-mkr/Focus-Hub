@@ -777,6 +777,10 @@ video {
           column-gap: 0.5rem;
 }
 
+.gap-y-2 {
+  row-gap: 0.5rem;
+}
+
 .overflow-auto {
   overflow: auto;
 }

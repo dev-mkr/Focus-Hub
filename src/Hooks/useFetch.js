@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 */
 
 const useFetch = (urlParam) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [apiData, setApiData] = useState({});
   const [error, setError] = useState(false);
 

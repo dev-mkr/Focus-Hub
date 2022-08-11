@@ -43,7 +43,7 @@ import { useState } from "react";
 */
 
 const useRequest = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [response, setRespone] = useState();
   const [error, setError] = useState(false);
 

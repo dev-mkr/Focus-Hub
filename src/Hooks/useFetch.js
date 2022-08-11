@@ -1,41 +1,65 @@
 import { useEffect, useState } from "react";
+// hook features ✨💫
+/*
+  fetch on page load or component get mounted agin note that 'you should pass url when you declare the hook to achieve this behavior'.
+  Great for making GET request. 
+  Want to make POST request or other method, have an API that require keys consider using useRequest hook <useRequest CodeSandBox LiNK>.
+  unlike useRequest useFetch has a cleanup function to deal with Race condition .
+  💡 don't know what is Race Conditions? see this article https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect
 
-const useFetch = (method, urlParam, body) => {
-  let isCanceled = false;
+  you can fetch on btn click or any specific action by using setUrl for example:
+  you initially fetch all posts then on btn click you call setUrl(".../posts/1").
 
+  very performant 🚀, error indicator, loading indicator etc.
+*/
+
+const useFetch = (urlParam) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [apiData, setApiData] = useState(null);
-  const [serverError, setServerError] = useState(null);
-  const [url, setUrl] = useState(urlParam); // if we want to fetch at specifec tiem on submet for exampel
+  const [apiData, setApiData] = useState({});
+  const [error, setError] = useState(false);
+
+  const [url, setUrl] = useState(urlParam);
 
   useEffect(() => {
-    setIsLoading(true);
-    const fetchData = async () => {
-      try {
-        const resp = await fetch({
-          method: method,
-          url: url,
-          data: body,
-        });
-        const data = await resp?.data;
-        if (!isCanceled) {
-          console.log(data);
+    const abortController = new AbortController();
+    let data;
+    //💡 making sure to call api with url
+    if (url) {
+      const fetchData = async () => {
+        setIsLoading(true);
+
+        try {
+          console.log("api called");
+          const resp = await fetch(url, { signal: abortController.signal });
+          //💡 handel response different types
+          resp.headers.get("content-type") === "application/json; charset=utf-8"
+            ? (data = await resp.json())
+            : (data = await resp.text());
+
           setApiData(data);
-          setIsLoading(false);
+          if (error) {
+            console.error(error);
+            setError(false);
+          }
+        } catch (error) {
+          if (error.name !== "AbortError") {
+            setError(true);
+            console.error(error);
+          }
         }
-      } catch (error) {
-        setServerError(error);
+
         setIsLoading(false);
-      }
-    };
+      };
 
-    fetchData();
+      fetchData();
+    }
+
     return () => {
-      isCanceled = true;
+      abortController.abort();
     };
-  }, [url, method, JSON.stringify(body)]);
+  }, [url, error]);
 
-  return [{ isLoading, apiData, serverError }, { setUrl }];
+  return [isLoading, error, apiData, setUrl];
 };
 
 export default useFetch;

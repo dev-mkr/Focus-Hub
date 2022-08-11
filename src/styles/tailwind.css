@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 247 247 247;
+    --color-secondary: 255 255 255;
+    --color-border: 229 231 235;
+    --color-text-base: 0 0 0;
+  }
+  :root {
+    scrollbar-color: #d4d4d4 #eaeaea;
+    scrollbar-width: thin;
+  }
+  :root *::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+  :root *::-webkit-scrollbar-corner {
+    background-color: #eaeaea;
+  }
+  :root *::-webkit-scrollbar-thumb {
+    background-color: #d4d4d4;
+    border: 1px solid #eaeaea;
+  }
+  :root *::-webkit-scrollbar-thumb:hover {
+    background-color: #6e6e6e;
+  }
+  *::-webkit-scrollbar-track {
+    border: 1px solid #eaeaea;
+    background-color: #eaeaea;
+  }
+  .dark-theme {
+    --color-primary: 22 24 25;
+    --color-secondary: 31 33 35;
+    --color-border: 43 45 46;
+    --color-text-base: 255 255 255;
+    @apply bg-primary;
+    scrollbar-color: #606060 #393939;
+    scrollbar-width: thin;
+  }
+  .dark-theme *::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+  .dark-theme *::-webkit-scrollbar-corner {
+    background-color: #393939;
+  }
+  .dark-theme *::-webkit-scrollbar-thumb {
+    background-color: #606060;
+    border: 1px solid #393939;
+  }
+  .dark-theme *::-webkit-scrollbar-track {
+    border: 1px solid #393939;
+    background-color: #393939;
+  }
+  .dark-theme *::-webkit-scrollbar-thumb:hover {
+    background-color: #868686;
+  }
+}
+/* you can add themes as you want */
+@layer utilities {
+  .overflow-wrap {
+    overflow-wrap: anywhere;
+  }
+  .blueGradient {
+    background-color: #99c5ff;
+    background-image: radial-gradient(
+        at 0% 89%,
+        hsla(148, 100%, 66%, 1) 0px,
+        transparent 50%
+      ),
+      radial-gradient(at 67% 76%, hsla(223, 100%, 70%, 1) 0px, transparent 50%);
+  }
+}

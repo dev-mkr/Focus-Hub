@@ -98,7 +98,6 @@ function reducerFunction(state, action) {
       };
     case "deleteColumn": {
       const columnTasksIds = state.columns[action.columnId].taskIds;
-
       const finalTasks = columnTasksIds.reduce((previousValue, currentValue) => {
         const { [currentValue]: oldTask, ...newTasks } = previousValue;
         return newTasks;
@@ -132,6 +131,10 @@ function reducerFunction(state, action) {
       const newColumn = state.columns[action.id];
       if (action.payload !== newColumn.title) {
         newColumn.title = action.payload;
+        //💡 prevent edit column title with empty string
+        if (action.payload === "") {
+          newColumn.title = "Untitled column";
+        }
         return {
           ...state,
           columns: {

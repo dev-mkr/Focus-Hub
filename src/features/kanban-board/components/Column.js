@@ -6,7 +6,11 @@ const Column = ({ columnId, columnTitle, index, children, dispatch }) => {
   return (
     <Draggable draggableId={columnId} index={index}>
       {(provided) => (
-        <div {...provided.draggableProps} ref={provided.innerRef}>
+        <div
+          {...provided.draggableProps}
+          ref={provided.innerRef}
+          className="p-5 border-t border-r border-base bg-primary"
+        >
           <ColumnHeader
             dragHandleProps={provided.dragHandleProps}
             columnTitle={columnTitle}
@@ -17,10 +21,10 @@ const Column = ({ columnId, columnTitle, index, children, dispatch }) => {
 
           <Droppable droppableId={columnId}>
             {(provided) => (
-              <div {...provided.droppableProps} ref={provided.innerRef}>
+              <ul {...provided.droppableProps} ref={provided.innerRef}>
                 {children}
                 {provided.placeholder}
-              </div>
+              </ul>
             )}
           </Droppable>
         </div>

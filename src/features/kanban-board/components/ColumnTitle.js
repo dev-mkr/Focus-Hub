@@ -4,7 +4,6 @@ import handelContentEditClick from "../utilities/handelEditClick";
 const ColumnTitle = ({ columnTitle, dispatch, columnId }) => {
   return (
     <h3
-      className="column-title"
       onClick={(e) => handelContentEditClick(e)}
       suppressContentEditableWarning={true}
       onBlur={(e) => handelContentEditBlur(e, dispatch, "editColumnTitle", columnId)}
@@ -14,6 +13,9 @@ const ColumnTitle = ({ columnTitle, dispatch, columnId }) => {
         }
         return;
       }}
+      title="click to edit column title"
+      aria-label="click to edit column title"
+      className="py-4 text-3xl font-bold opacity-90 overflow-wrap w-3/4 "
     >
       {columnTitle}
     </h3>

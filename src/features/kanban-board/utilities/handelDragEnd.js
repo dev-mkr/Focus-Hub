@@ -1,12 +1,17 @@
 function handelDragEnd(result, globalState, dispatch) {
   const { destination, source, draggableId, type } = result;
 
-  if (!destination) return;
-
-  if (destination.droppableId === source.droppableId && destination.index === source.index) {
+  if (!destination) {
     return;
   }
 
+  if (
+    destination.droppableId === source.droppableId &&
+    destination.index === source.index
+  ) {
+    return;
+  }
+  //💡 moving column
   if (type === "column") {
     const newColumnOrder = Array.from(globalState.columnOrder);
     newColumnOrder.splice(source.index, 1);
@@ -19,6 +24,7 @@ function handelDragEnd(result, globalState, dispatch) {
   const start = globalState.columns[source.droppableId];
   const finish = globalState.columns[destination.droppableId];
 
+  //💡 moving task in same column
   if (start === finish) {
     const newTaskIds = Array.from(start.taskIds);
     newTaskIds.splice(source.index, 1);
@@ -37,6 +43,7 @@ function handelDragEnd(result, globalState, dispatch) {
     return;
   }
 
+  //💡 moving task to another column
   const startTaskIds = Array.from(start.taskIds);
   startTaskIds.splice(source.index, 1);
   const newStart = {

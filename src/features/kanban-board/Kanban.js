@@ -1,4 +1,4 @@
-import { useCallback, useState, useReducer } from "react";
+import { useReducer } from "react";
 import React from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import Column from "./components/Column";
@@ -15,7 +15,11 @@ function Kanban({ data }) {
     <DragDropContext onDragEnd={(result) => handelDragEnd(result, globalState, dispatch)}>
       <Droppable droppableId="all-columns" direction="horizontal" type="column">
         {(provided) => (
-          <div className="board" {...provided.droppableProps} ref={provided.innerRef}>
+          <section
+            className="bg-primary sm:grid  grid-flow-col auto-cols-[300px] overflow-auto  "
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+          >
             {globalState.columnOrder.map((columnId, index) => {
               const column = globalState.columns[columnId];
 
@@ -41,9 +45,10 @@ function Kanban({ data }) {
                 </Column>
               );
             })}
+
             {provided.placeholder}
             <AddNewColumn dispatch={dispatch} />
-          </div>
+          </section>
         )}
       </Droppable>
     </DragDropContext>

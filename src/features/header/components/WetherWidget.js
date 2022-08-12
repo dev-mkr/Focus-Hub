@@ -31,7 +31,7 @@ const WetherWidget = () => {
       } rounded-xl p-2 max-w-sm  text-white flex-wrap`}
     >
       {geoError ? (
-        geoError
+        geoError === 'User denied Geolocation' ? 'Please allow access to the location then refresh the page.' : geoError
       ) : isLoading ? (
         "loading..."
       ) : error ? (

@@ -14,6 +14,22 @@
  - [ ] prayer time
  - [ ] quran player
  # Featuers
+### Main Features:
+
+* Drag and drop Kanban Board
+* Editable task content
+* Editable column title content
+* Dark mood with localStorage
+* Weather widget
+* Quote widget  
+* Pomodoro timer under Construction 🚧
+* Prayer time under Construction 🚧
+* Quran player under Construction 🚧
+
+### Upcoming Features:
+* web Extinction 
+### Upcoming enhancements for developer experience:
+* Adding unit-testing
  # Folder structure
  # Contribution Guide
  1. Clone the repo

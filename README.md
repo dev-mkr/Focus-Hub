@@ -7,6 +7,12 @@
   </p>
   
   Focus Hub is an open‑source Productivity tool.
+ # todo
+ - [ ] skeleton loader
+ - [ ] draggable sidebar items
+ - [ ] pomodoro timer
+ - [ ] prayer time
+ - [ ] quran player
  # Featuers
  # Folder structure
  # Contribution Guide

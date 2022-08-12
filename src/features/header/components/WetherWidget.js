@@ -7,7 +7,6 @@ let didInit = false;
 const WetherWidget = () => {
   const [latitude, longitude, geoError] = usePosition();
   const [isLoading, error, weatherData, fetch] = useRequest();
-  console.log({ isLoading, error, weatherData });
   //making use of component rerender 👇🏼.
   //in the initial render latitude and longitude will be undefined then the usePosition hook well cause rerender so we don't need useEffect
   if (!didInit) {
@@ -20,11 +19,11 @@ const WetherWidget = () => {
       );
     }
   }
-
   const iconPath = process.env.PUBLIC_URL + "/wetherIcons/";
+
   return (
     <div
-      className={`flex justify-around items-center  ${
+      className={`flex justify-around items-center ${
         !isLoading && weatherData.main.temp < 20
           ? "blueGradient"
           : "bg-gradient-to-r from-[#FF512F] to-[#DD2476]"

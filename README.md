@@ -7,10 +7,6 @@
   </p>
   
   Focus Hub is an open‑source Productivity tool.
- # todo
- - [ ] 
-
-
  # Featuers
  # Folder structure
  # Contribution Guide

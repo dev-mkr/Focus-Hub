@@ -6,7 +6,7 @@
   </a>
   </p>
   
-  Focus Hub is an open‑source Productivity tool.
+  Focus Hub is an open‑source Productivity tool. powered by Reactjs, React hooks, react-beautifull-dnd, tailwindcss, custom hooks, and Fetch API and more.
  # todo
  - [ ] skeleton loader
  - [ ] draggable sidebar items

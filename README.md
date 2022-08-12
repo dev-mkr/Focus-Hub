@@ -1,8 +1,8 @@
-  
+
  🚧 under Construction 🚧
   <p align="center">
   <a href="https://focus-hub.netlify.app" target="_blank">
-    <img alt="focus-hub logo" height="70"  src="https://raw.githubusercontent.com/dev-mkr/Focus-Hub/2ee6dcc8a4b2fc7f3d6d55e36e6eb7848868dd3e/src/assets/appLogo.svg"/>
+    <img alt="focus-hub logo" height="200"  src="https://user-images.githubusercontent.com/101500659/184385526-24316c1e-0c48-41a7-aa9c-81216f256da7.png"/>
   </a>
   </p>
   

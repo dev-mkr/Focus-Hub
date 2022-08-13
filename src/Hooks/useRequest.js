@@ -4,7 +4,7 @@ import { useState } from "react";
   Only fetch when callApi function get called, best choice for make request on btn click or any specific action.
   Great for making HTTP request with any method.
   you can use it to fetch data with POST request for example: apis that require api key but be careful, 
-  🛑 useRequest doesn't have a cleanup function to deal with Race condition so use it wisely, but you can implement that to deal with race condition 
+  🛑 useRequest doesn't have a cleanup function to deal with Race condition so use it wisely, but you can implement that to deal with race condition but after you call the hook 
   💡 Don't know what is Race Conditions? see this article https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect
 
   You can't fetch on page load or component get mounted if you want this behavior you can implement it that way ex:👇🏼

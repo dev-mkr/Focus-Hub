@@ -5,7 +5,7 @@
     <img alt="focus-hub logo" height="200"  src="https://user-images.githubusercontent.com/101500659/184385526-24316c1e-0c48-41a7-aa9c-81216f256da7.png"/>
   </a>
   
-<h3 align="center"> Focus Hub is an open‑source Productivity tool. powered by Reactjs, React hooks, react-beautifull-dnd, tailwindcss, custom hooks, and Fetch API and more.</h3> 
+<h3 align="center"> Focus Hub is an open‑source Productivity tool. powered by Reactjs, React hooks, react-beautifull-dnd, tailwindcss, custom hooks, Fetch API and more.</h3> 
 
  # todo
  - [ ] skeleton loader

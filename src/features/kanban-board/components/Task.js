@@ -18,6 +18,7 @@ const Task = ({ content, taskId, index, columnId, dispatch }) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
+          role="listitem"
         >
           <p
             onClick={(e) => handelContentEditClick(e)}

@@ -1,7 +1,8 @@
 import React from "react";
 import useRequest from "../../../Hooks/useRequest";
-import { usePosition } from "../../../Hooks/usePosition";
+import usePosition from "../../../Hooks/usePosition";
 import { ReactComponent as LocationIcon } from "../../../assets/locationIcon.svg";
+import Button from "../../../components/Button";
 
 let didInit = false;
 const WetherWidget = () => {
@@ -30,7 +31,16 @@ const WetherWidget = () => {
       } rounded-xl p-2 max-w-sm  text-white flex-wrap`}
     >
       {geoError ? (
-        geoError === 'User denied Geolocation' ? 'Please allow access to the location then refresh the page.' : geoError
+        geoError === "User denied Geolocation" ? (
+          <Button
+            handelClick={() => navigator.geolocation.getCurrentPosition(() => {})}
+            accessability="click to allow access to location."
+          >
+            click to allow access to location.
+          </Button>
+        ) : (
+          geoError
+        )
       ) : isLoading ? (
         "loading..."
       ) : error ? (
@@ -59,7 +69,7 @@ const WetherWidget = () => {
           </div>
 
           <div className="flex flex-col gap-y-2  text-xs ">
-            <h4 className="text-5xl font-bold ">{weatherData.main.temp}°C</h4>
+            <p className="text-5xl font-bold ">{weatherData.main.temp}°C</p>
             <div>
               <p>Feels like: {weatherData.main.feels_like}°C</p>
               <p>Humidity: {weatherData.main.humidity}%</p>

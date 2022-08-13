@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 // Get user location latitude, longitude powered by navigator.geolocation web API
 // very performant 🚀 run once per app load, error indicator
 
-export const usePosition = () => {
+const usePosition = () => {
   const [position, setPosition] = useState({});
   const [error, setError] = useState(null);
 
@@ -20,10 +20,16 @@ export const usePosition = () => {
     const geo = navigator.geolocation;
     if (!geo) {
       setError("Geolocation is not supported");
-      return;
     }
-    geo.getCurrentPosition(onSuccess, onError);
+    navigator.permissions.query({ name: "geolocation" }).then((result) => {
+      if (result.state === "granted") {
+        geo.getCurrentPosition(onSuccess, onError);
+      } else {
+        setError("User denied Geolocation");
+      }
+    });
   }, []);
 
   return [position.latitude, position.longitude, error];
 };
+export default usePosition;

@@ -1,15 +1,53 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import React from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import Column from "./components/Column";
 import Task from "./components/Task";
 import { AddNewColumn } from "./components/AddNewColumn";
-import initialState from "../../data/initialData";
 import reducerFunction from "./utilities/reducerFunction";
 import handelDragEnd from "./utilities/handelDragEnd";
+import useLocalStorage from "../../Hooks/useLocalStorage";
+const initialData = {
+  tasks: {
+    "task-1": {
+      id: "task-1",
+      content: "create video",
+    },
+    "task-2": {
+      id: "task-2",
+      content: "edit video",
+    },
+    "task-3": {
+      id: "task-3",
+      content: "publish video",
+    },
+  },
+  columns: {
+    "column-1": {
+      id: "column-1",
+      title: "To do",
+      taskIds: ["task-1", "task-2", "task-3"],
+    },
+    "column-2": {
+      id: "column-2",
+      title: "In progress",
+      taskIds: [],
+    },
+    "column-3": {
+      id: "column-3",
+      title: "Done",
+      taskIds: [],
+    },
+  },
+  columnOrder: ["column-1", "column-2", "column-3"],
+};
 
-function Kanban({ data }) {
-  const [globalState, dispatch] = useReducer(reducerFunction, initialState);
+function Kanban() {
+  const [kanbanData, setKanbanData] = useLocalStorage("kanbanData", initialData);
+  const [globalState, dispatch] = useReducer(reducerFunction, kanbanData);
+  useEffect(() => {
+    setKanbanData(globalState);
+  }, [globalState]);
 
   return (
     <DragDropContext onDragEnd={(result) => handelDragEnd(result, globalState, dispatch)}>

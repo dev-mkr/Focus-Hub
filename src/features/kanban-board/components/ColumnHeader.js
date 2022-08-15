@@ -7,10 +7,10 @@ const ColumnHeader = ({ columnId, columnTitle, index, dispatch, dragHandleProps 
     <header
       {...dragHandleProps}
       onMouseDown={(e) => e.currentTarget.focus()}
-      className="pb-4 flex justify-between  overflow-wrap group relative focus:outline-none"
+      className="flex justify-between  overflow-wrap group relative focus:outline-none"
     >
       <ColumnTitle columnTitle={columnTitle} dispatch={dispatch} columnId={columnId} />
-      <div className=" absolute top-1/2 right-0 translate-y-[-50%] lg:invisible group-hover:visible ">
+      <div className="flex items-center justify-center lg:invisible group-hover:visible ">
         <AddNewTask dispatch={dispatch} columnId={columnId} />
         <DeleteColumns dispatch={dispatch} columnId={columnId} index={index} />
       </div>

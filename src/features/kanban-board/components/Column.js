@@ -9,7 +9,7 @@ const Column = ({ columnId, columnTitle, index, children, dispatch }) => {
         <div
           {...provided.draggableProps}
           ref={provided.innerRef}
-          className="p-5 border-t border-r border-base bg-primary"
+          className="p-5 flex flex-col border-t border-r border-base bg-primary"
         >
           <ColumnHeader
             dragHandleProps={provided.dragHandleProps}
@@ -21,7 +21,7 @@ const Column = ({ columnId, columnTitle, index, children, dispatch }) => {
 
           <Droppable droppableId={columnId}>
             {(provided) => (
-              <ul {...provided.droppableProps} ref={provided.innerRef}>
+              <ul {...provided.droppableProps} ref={provided.innerRef} className="grow">
                 {children}
                 {provided.placeholder}
               </ul>

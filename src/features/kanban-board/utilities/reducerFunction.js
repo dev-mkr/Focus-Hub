@@ -1,49 +1,33 @@
-function reducerFunction(state, action) {
+import produce from "immer";
+
+function reducerFunction(draft, action) {
   switch (action.type) {
-    case "moveTaskToDifColumn":
-      return {
-        ...state,
-        columns: {
-          ...state.columns,
-          [action.startId]: action.payload[action.startId],
-          [action.finishId]: action.payload[action.finishId],
-        },
-      };
-    case "changeTaskInSameColumn":
-      return {
-        ...state,
-        columns: {
-          ...state.columns,
-          [action.columnId]: action.payload,
-        },
-      };
+    case "moveTaskToDifColumn": {
+      draft.columns[action.startId] = action.payload[action.startId];
+      draft.columns[action.finishId] = action.payload[action.finishId];
+      return;
+    }
+    case "changeTaskInSameColumn": {
+      draft.columns[action.columnId] = action.payload;
+      return;
+    }
     case "editTaskContent": {
-      const newTask = state.tasks[action.id];
-      if (action.payload !== newTask.content) {
-        newTask.content = action.payload;
-        return {
-          ...state,
-          tasks: {
-            ...state.tasks,
-            [action.taskId]: newTask,
-          },
-        };
+      const task = draft.tasks[action.id];
+      if (action.payload !== task.content) {
+        draft.tasks[action.id].content = action.payload;
+        return;
       }
-      return state;
+      return draft;
     }
     case "addNewTask": {
+      //💡 create a new task
       const task = {
         id: `task-${Math.floor(Math.random() * 10000000)}`,
         content: "",
       };
+      draft.tasks[task.id] = task;
+      draft.columns[action.columnId].taskIds.push(task.id);
 
-      const columnTaskIds = [...state.columns[action.columnId].taskIds];
-      columnTaskIds.push(task.id);
-
-      const newColumn = {
-        ...state.columns[action.columnId],
-        taskIds: columnTaskIds,
-      };
       //💡 focus on the task after it inserted to the dom
       setTimeout(() => {
         const column = document.querySelector(
@@ -52,107 +36,49 @@ function reducerFunction(state, action) {
         const addedTask = column.querySelector(".column-item:last-child p");
         addedTask.click();
       }, 0);
-      return {
-        ...state,
-        tasks: {
-          ...state.tasks,
-          [task.id]: task,
-        },
-        columns: {
-          ...state.columns,
-          [action.columnId]: newColumn,
-        },
-      };
-    }
 
+      return;
+    }
     case "deleteTask": {
-      const column = state.columns[action.columnId];
-      const newTaskIds = Array.from(column.taskIds);
-      newTaskIds.splice(action.index, 1);
-
-      const tasks = state.tasks;
-      const { [action.taskId]: oldTask, ...newTasks } = tasks;
-
-      return {
-        ...state,
-        tasks: {
-          ...newTasks,
-        },
-        columns: {
-          ...state.columns,
-          [action.columnId]: {
-            ...column,
-            taskIds: newTaskIds,
-          },
-        },
-      };
+      delete draft.tasks[action.taskId];
+      draft.columns[action.columnId].taskIds.splice(action.index, 1);
+      return;
     }
-    case "addNewColumn":
-      return {
-        ...state,
-        columns: {
-          ...state.columns,
-          [action.payload.id]: action.payload,
-        },
-        columnOrder: [...state.columnOrder, action.payload.id],
-      };
+    case "addNewColumn": {
+      draft.columns[action.payload.id] = action.payload;
+      draft.columnOrder.push(action.payload.id);
+      return;
+    }
     case "deleteColumn": {
-      const columnTasksIds = state.columns[action.columnId].taskIds;
-      const finalTasks = columnTasksIds.reduce((previousValue, currentValue) => {
-        const { [currentValue]: oldTask, ...newTasks } = previousValue;
-        return newTasks;
-      }, state.tasks);
-      //another method
-      // const entrise = Object.entries(tasks).filter((task) => {
-      //   return !columnIds.includes(task[0]);
-      // })
-      // const finalTasks = {};
-      // entrise.map((task) => {
-      // newTasks[task[0]] =  task[1]
-      // })
-
-      const columns = state.columns;
-      const { [action.columnId]: oldColumn, ...newColumns } = columns;
-
-      const newColumnOrder = Array.from(state.columnOrder);
-      newColumnOrder.splice(action.index, 1);
-
-      return {
-        tasks: {
-          ...finalTasks,
-        },
-        columns: {
-          ...newColumns,
-        },
-        columnOrder: newColumnOrder,
-      };
+      //💡 delete column tasks
+      draft.columns[action.columnId].taskIds.map(
+        (delTaskId) => delete draft.tasks[delTaskId]
+      );
+      //💡 delete column
+      delete draft.columns[action.columnId];
+      draft.columnOrder.splice(action.index, 1);
+      return;
     }
     case "editColumnTitle": {
-      const newColumn = state.columns[action.id];
-      if (action.payload !== newColumn.title) {
-        newColumn.title = action.payload;
-        //💡 prevent edit column title with empty string
+      const column = draft.columns[action.id];
+      if (action.payload !== column.title) {
+        column.title = action.payload;
         if (action.payload === "") {
-          newColumn.title = "Untitled column";
+          column.title = "Untitled column";
         }
-        return {
-          ...state,
-          columns: {
-            ...state.columns,
-            [action.columnId]: newColumn,
-          },
-        };
+        return;
       }
-      return state;
+      return draft;
     }
-    case "columnMove":
-      return {
-        ...state,
-        columnOrder: action.payload,
-      };
-
+    case "columnMove": {
+      draft.columnOrder = action.payload;
+      return;
+    }
     default:
       throw new Error(`Unknown action type: ${action.type}`);
   }
 }
-export default reducerFunction;
+
+const curriedLoginReducer = produce(reducerFunction);
+
+export default curriedLoginReducer;

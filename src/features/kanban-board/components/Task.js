@@ -7,7 +7,6 @@ import Button from "../../../components/Button";
 
 const Task = ({ content, taskId, index, columnId, dispatch }) => {
   const handelDelete = () => {
-    console.log(taskId);
     dispatch({ type: "deleteTask", taskId, index, columnId });
   };
   return (
@@ -26,7 +25,7 @@ const Task = ({ content, taskId, index, columnId, dispatch }) => {
             onBlur={(e) => handelContentEditBlur(e, dispatch, "editTaskContent", taskId)}
             title="click to edit task"
             aria-label="click to edit task"
-            className="p-4 text-lg overflow-wrap w-full font-normal opacity-70"
+            className="p-4 text-lg overflow-wrap w-full font-normal opacity-80"
           >
             {content}
           </p>

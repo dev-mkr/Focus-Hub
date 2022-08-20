@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "../../../components/Button";
-import { ReactComponent as Plusicon } from "../../../assets/plusicon.svg";
+import Button from "components/Button";
+import { ReactComponent as Plusicon } from "assets/plusicon.svg";
 
 export const AddNewColumn = ({ dispatch }) => {
   const handelClick = (e) => {

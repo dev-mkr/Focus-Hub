@@ -2,8 +2,8 @@ import { Draggable } from "react-beautiful-dnd";
 import React from "react";
 import handelContentEditBlur from "../utilities/handelContentEditBlur";
 import handelContentEditClick from "../utilities/handelEditClick";
-import { ReactComponent as Xicon } from "../../../assets/xicon.svg";
-import Button from "../../../components/Button";
+import { ReactComponent as Xicon } from "assets/xicon.svg";
+import Button from "components/Button";
 
 const Task = ({ content, taskId, index, columnId, dispatch }) => {
   const handelDelete = () => {

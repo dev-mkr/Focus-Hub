@@ -6,8 +6,8 @@ import Task from "./components/Task";
 import { AddNewColumn } from "./components/AddNewColumn";
 import reducerFunction from "./utilities/reducerFunction";
 import handelDragEnd from "./utilities/handelDragEnd";
-import useLocalStorage from "../../Hooks/useLocalStorage";
-import initialData from "../../data/initialData";
+import useLocalStorage from "Hooks/useLocalStorage";
+import initialData from "data/initialData";
 
 function Kanban() {
   const [kanbanData, setLocalKanbanData] = useLocalStorage("kanbanData", initialData);

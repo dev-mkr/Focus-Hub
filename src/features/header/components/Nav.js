@@ -1,6 +1,6 @@
 import React from "react";
 import ToggleTheme from "./ToggleTheme";
-import { ReactComponent as AppLogo } from "../../../assets/appLogo.svg";
+import { ReactComponent as AppLogo } from "assets/appLogo.svg";
 
 const Nav = () => {
   return (

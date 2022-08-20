@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ children, accessability, className, handelClick }) => {
+const Button = ({ children, accessability, className, handelClick, disabled }) => {
   return (
     <button
       onClick={handelClick}
@@ -8,6 +8,7 @@ const Button = ({ children, accessability, className, handelClick }) => {
       title={accessability}
       className={className}
       aria-label={accessability}
+      disabled={disabled}
     >
       {children}
     </button>

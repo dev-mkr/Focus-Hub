@@ -1,5 +1,5 @@
 import React from "react";
-import useRequest from "../../../Hooks/useRequest";
+import useRequest from "Hooks/useRequest";
 let didInit = false;
 const Quote = () => {
   const [isLoading, error, quote, callApi] = useRequest();

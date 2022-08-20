@@ -1,8 +1,8 @@
 import React from "react";
-import Button from "../../../components/Button";
-import useLocalStorage from "../../../Hooks/useLocalStorage";
-import { ReactComponent as DarkThemeIcon } from "../../../assets/darkThemeIcon.svg";
-import { ReactComponent as LightThemeIcon } from "../../../assets/lightThemeIcon.svg";
+import Button from "components/Button";
+import useLocalStorage from "Hooks/useLocalStorage";
+import { ReactComponent as DarkThemeIcon } from "assets/darkThemeIcon.svg";
+import { ReactComponent as LightThemeIcon } from "assets/lightThemeIcon.svg";
 const ToggleTheme = () => {
   const [theme, setTheme] = useLocalStorage("theme");
 

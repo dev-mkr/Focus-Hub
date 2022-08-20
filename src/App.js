@@ -1,6 +1,6 @@
 import React from "react";
-import useLocalStorage from "./Hooks/useLocalStorage";
-import Home from "./pages/Home";
+import useLocalStorage from "Hooks/useLocalStorage";
+import Home from "pages/Home";
 function App() {
   const [theme] = useLocalStorage("theme", "light");
   if (theme === "dark") {

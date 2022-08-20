@@ -1,8 +1,8 @@
 import React from "react";
-import useRequest from "../../../Hooks/useRequest";
-import usePosition from "../../../Hooks/usePosition";
-import { ReactComponent as LocationIcon } from "../../../assets/locationIcon.svg";
-import Button from "../../../components/Button";
+import useRequest from "Hooks/useRequest";
+import usePosition from "Hooks/usePosition";
+import { ReactComponent as LocationIcon } from "assets/locationIcon.svg";
+import Button from "components/Button";
 
 let didInit = false;
 const WetherWidget = () => {
@@ -34,9 +34,9 @@ const WetherWidget = () => {
         geoError === "User denied Geolocation" ? (
           <Button
             handelClick={() => navigator.geolocation.getCurrentPosition(() => {})}
-            accessability="click to allow access to location."
+            accessability="click to allow access to location then refresh the page."
           >
-            click to allow access to location.
+            click to allow access to location then refresh the page.
           </Button>
         ) : (
           geoError

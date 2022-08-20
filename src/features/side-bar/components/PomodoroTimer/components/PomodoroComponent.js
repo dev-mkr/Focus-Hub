@@ -1,10 +1,10 @@
 import React from "react";
+import { toast } from "react-toastify";
 import displayTime from "../utilities/displayTime";
-import Button from "components/Button";
 import useNotification from "Hooks/useNotification";
-import breakQuotes from "data/breakQuotes";
 import DisplayTimer from "./DisplayTimer";
 import TimeOptions from "./TimeOptions";
+let didInit = false;
 const PomodoroComponent = ({
   timeLeft,
   totalTime,
@@ -12,8 +12,26 @@ const PomodoroComponent = ({
   setIsRunning,
   setTimeLeft,
 }) => {
-  const showNotification = useNotification();
+  const [, permission] = useNotification();
   const strokeDasharray = (timeLeft / totalTime.current) * 283;
+  const notify = (msg) => {
+    toast.info(msg, {
+      position: "top-right",
+      autoClose: 10000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: false,
+      progress: undefined,
+    });
+  };
+  if (!didInit && permission === "denied") {
+    didInit = true;
+    notify(
+      "please allow notifications permission From the I icon in the search bar above"
+    );
+  }
+
   const changeTitle = () => {
     isRunning
       ? (document.title = `${displayTime(timeLeft)} - Focus Hub`)
@@ -21,12 +39,6 @@ const PomodoroComponent = ({
   };
   changeTitle();
 
-  const displayNotification = () => {
-    if (isRunning === false && timeLeft <= 0) {
-      showNotification("Finished 🥳", breakQuotes());
-    }
-  };
-  displayNotification();
   const handelTimeOptionClick = (e, time) => {
     setIsRunning(true);
     setTimeLeft(time);

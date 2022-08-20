@@ -1,5 +1,7 @@
+import { useState } from "react";
+
 const useNotification = () => {
-  let permission = Notification.permission;
+  const [permission, setPermission] = useState(() => Notification.permission);
 
   if (permission === "default") {
     requestPermission();
@@ -20,14 +22,14 @@ const useNotification = () => {
       };
     }
   };
-  const requestPermission = () => {
+  function requestPermission() {
     Notification.requestPermission(function (permission) {
       if (permission === "denied") {
-        alert("please allow notifications From the I icon in the search bar above");
+        setPermission("denied");
       }
     });
-  };
-  return showNotification;
+  }
+  return [showNotification, permission];
 };
 
 export default useNotification;

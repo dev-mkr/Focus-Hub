@@ -28,7 +28,7 @@ const PomodoroComponent = ({
   if (!didInit && permission === "denied") {
     didInit = true;
     notify(
-      "please allow notifications permission From the I icon in the search bar above"
+      "please allow notifications permission from the i icon in the search bar above to get notified"
     );
   }
 

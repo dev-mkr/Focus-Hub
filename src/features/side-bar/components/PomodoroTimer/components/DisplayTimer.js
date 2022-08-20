@@ -18,7 +18,7 @@ const DisplayTimer = ({
       <span className="text-xs mb-[-20px]">
         {isRunning && displayEndTime(Date.now() + timeLeft * 1000)}
       </span>
-      <h3 className=" font-bold text-6xl basis-full opacity-90">
+      <h3 className=" font-bold text-6xl basis-full opacity-90" aria-label="Time left">
         {displayTime(timeLeft)}
       </h3>
       <Button

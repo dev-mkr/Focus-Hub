@@ -2,27 +2,31 @@ const useNotification = () => {
   let permission = Notification.permission;
 
   if (permission === "default") {
-    requestAndShowPermission();
+    requestPermission();
   }
+  const showNotification = (title, body) => {
+    if (permission === "default" || permission === "denied") {
+      requestPermission();
+    } else {
+      const options = {
+        body,
+        icon: "https://raw.githubusercontent.com/dev-mkr/Focus-Hub/master/public/favicon.ico",
+      };
 
-  function showNotification(title, body) {
-    const options = {
-      icon: "../assets/Vector.png",
-    };
-
-    const notification = new Notification(title, { body, options });
-    notification.onclick = () => {
-      notification.close();
-      window.parent.focus();
-    };
-  }
-  function requestAndShowPermission() {
+      const notification = new Notification(title, options);
+      notification.onclick = () => {
+        notification.close();
+        window.parent.focus();
+      };
+    }
+  };
+  const requestPermission = () => {
     Notification.requestPermission(function (permission) {
       if (permission === "denied") {
-        alert("please allow notifications");
+        alert("please allow notifications From the i icon in the search bar above");
       }
     });
-  }
+  };
   return showNotification;
 };
 

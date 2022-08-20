@@ -23,7 +23,7 @@ const useNotification = () => {
   const requestPermission = () => {
     Notification.requestPermission(function (permission) {
       if (permission === "denied") {
-        alert("please allow notifications From the i icon in the search bar above");
+        alert("please allow notifications From the I icon in the search bar above");
       }
     });
   };

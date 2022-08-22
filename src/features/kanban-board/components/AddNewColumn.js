@@ -13,7 +13,7 @@ export const AddNewColumn = ({ dispatch }) => {
   };
   return (
     <Button
-      handelClick={handelClick}
+      onClick={handelClick}
       accessability="Add a new list"
       className="hover:opacity-50 flex justify-center px-5 p-11 focus:outline-none "
     >

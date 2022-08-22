@@ -12,7 +12,7 @@ const ToggleTheme = () => {
   };
   return (
     <Button
-      handelClick={handelClick}
+      onClick={handelClick}
       accessability={`Activate ${theme === "light" ? "dark" : "light"} mood`}
       className="grid items-center hover:opacity-70  p-2  focus:outline-none bg-primary  rounded-md"
     >

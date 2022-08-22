@@ -33,7 +33,7 @@ const WetherWidget = () => {
       {geoError ? (
         geoError === "User denied Geolocation" ? (
           <Button
-            handelClick={() => navigator.geolocation.getCurrentPosition(() => {})}
+            onClick={() => navigator.geolocation.getCurrentPosition(() => {})}
             accessability="click to allow access to location then refresh the page."
           >
             click to allow access to location then refresh the page.

@@ -30,7 +30,7 @@ const Task = ({ content, taskId, index, columnId, dispatch }) => {
             {content}
           </p>
           <Button
-            handelClick={handelDelete}
+            onClick={handelDelete}
             accessability="delete task"
             className="absolute top-1/2 right-3 translate-y-[-50%] backdrop-blur-md hover:opacity-50 lg:invisible group-hover:visible "
           >

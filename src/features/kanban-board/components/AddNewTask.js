@@ -7,7 +7,7 @@ export const AddNewTask = ({ dispatch, columnId }) => {
   };
   return (
     <Button
-      handelClick={handelClick}
+      onClick={handelClick}
       accessability="Add a new task"
       className="hover:opacity-50  backdrop-blur-md mr-1"
     >

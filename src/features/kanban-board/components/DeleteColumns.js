@@ -8,7 +8,7 @@ const DeleteColumns = ({ dispatch, columnId, index }) => {
   };
   return (
     <Button
-      handelClick={handelClick}
+      onClick={handelClick}
       accessability="delete column"
       className="hover:opacity-50 backdrop-blur-md"
     >

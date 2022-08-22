@@ -1,9 +1,10 @@
 import React from "react";
 
-const Button = ({ children, accessability, className, handelClick, disabled }) => {
+const Button = ({ children, accessability, className, onClick, onBlur, disabled }) => {
   return (
     <button
-      onClick={handelClick}
+      onClick={onClick}
+      onBlur={onBlur}
       type="button"
       title={accessability}
       className={className}

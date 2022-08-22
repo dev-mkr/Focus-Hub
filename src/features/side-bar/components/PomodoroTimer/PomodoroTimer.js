@@ -22,8 +22,10 @@ const PomodoroTimer = () => {
     () => {
       if (Math.round((then - Date.now()) / 1000) <= 0) {
         setIsRunning(false);
-        totalTime.current === 1500 && showNotification("Finished 🥳", getRandomBreakQuote());
-        totalTime.current <= 900 && showNotification("Time to work", getRandomMotivateQuote());
+        totalTime.current === 1500 &&
+          showNotification("Finished 🥳", getRandomBreakQuote());
+        totalTime.current <= 900 &&
+          showNotification("Time to work", getRandomMotivateQuote());
       }
     },
     isRunning ? 1000 : null
@@ -42,4 +44,4 @@ const PomodoroTimer = () => {
   );
 };
 
-export default PomodoroTimer;
+export default React.memo(PomodoroTimer);

@@ -34,7 +34,8 @@ const DisplayTimer = ({
       <Button
         handelClick={() => handelRestartClick(totalTime.current)}
         accessability="Restart Timer"
-        className="opacity-70 hover:opacity-50 focus:outline-none"
+        className="opacity-70 hover:opacity-50 focus:outline-none disabled:opacity-50"
+        disabled={isRunning === false && true}
       >
         <Restart className="w-8" />
       </Button>

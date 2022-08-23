@@ -7,26 +7,20 @@
   
 <h3 align="center"> Focus Hub is an open‑source Productivity tool. powered by Reactjs, React hooks, react-beautifull-dnd, tailwindcss, custom hooks, Fetch API and more.</h3> 
 
- # todo
- - [ ] skeleton loader
- - [ ] draggable sidebar items
- - [ ] pomodoro timer
- - [ ] prayer time
- - [ ] quran player
- # Featuers
-### Main Features:
 
+# Main Features✨
 * Drag and drop Kanban Board
+* Full crud operations saved in localStorage
 * Editable task content
 * Editable column title content
-* Dark mood with localStorage
+* Dark mood with switch sounds✨, saved in localStorage
 * Weather widget
 * Quote widget  
-* Pomodoro timer under Construction 🚧
-* Prayer time under Construction 🚧
-* Quran player under Construction 🚧
+* Pomodoro timer with browser notifications and quotes
+* Quran radio streams 
 
 ### Upcoming Features:
+* customize reciters list by users -adding there favorits-
 * web Extinction 
 ### Upcoming enhancements for developer experience:
 * Adding unit-testing

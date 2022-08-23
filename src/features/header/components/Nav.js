@@ -10,8 +10,10 @@ const Nav = () => {
         title="Logo"
         className="flex justify-between items-center text-2xl sm:text-3xl font-bold"
       >
-        <AppLogo className="w-10 " /> Focus Hup
+        <AppLogo className="w-10 " /> Focus Hup{" "}
+        <span className="ml-1 text-base font-normal">Beta</span>
       </h1>
+
       <ToggleTheme />
     </nav>
   );

@@ -22,7 +22,7 @@ const DisplayTimer = ({
         {displayTime(timeLeft)}
       </h3>
       <Button
-        handelClick={() => {
+        onClick={() => {
           setIsRunning(!isRunning);
         }}
         accessability={`${isRunning ? "Pause" : "Start"} Timer`}
@@ -32,7 +32,7 @@ const DisplayTimer = ({
         {isRunning ? <PauseIcon className="w-8" /> : <PlayIcon className="w-8" />}
       </Button>
       <Button
-        handelClick={() => handelRestartClick(totalTime.current)}
+        onClick={() => handelRestartClick(totalTime.current)}
         accessability="Restart Timer"
         className="opacity-70 hover:opacity-50 focus:outline-none disabled:opacity-50"
         disabled={isRunning === false && true}

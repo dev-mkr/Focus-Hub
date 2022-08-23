@@ -13,6 +13,9 @@ module.exports = {
       borderColor: {
         base: "rgb(var(--color-border) / <alpha-value> )",
       },
+      backdropBlur: {
+        "4xl": "74px",
+      },
     },
   },
   plugins: [],

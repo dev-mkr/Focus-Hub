@@ -23,7 +23,7 @@ const WetherWidget = () => {
   const iconPath = process.env.PUBLIC_URL + "/wetherIcons/";
   return (
     <section
-      className={`flex min-h-[16rem] max-h-[18rem] gap-y-2.5 text-center justify-around items-center  text-base ${
+      className={`flex min-h-[10rem] max-h-[18rem] gap-y-2.5 text-center justify-around items-center  text-base ${
         isLoading
           ? "bg-primary"
           : weatherData.main.temp < 20

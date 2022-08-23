@@ -21,14 +21,15 @@ const WetherWidget = () => {
     }
   }
   const iconPath = process.env.PUBLIC_URL + "/wetherIcons/";
-
   return (
-    <div
-      className={`flex justify-around items-center ${
-        !isLoading && weatherData.main.temp < 20
-          ? "blueGradient"
-          : "bg-gradient-to-r from-[#FF512F] to-[#DD2476]"
-      } rounded-xl p-2 max-w-sm  text-white flex-wrap`}
+    <section
+      className={`flex h-52 justify-around items-center  text-base ${
+        isLoading
+          ? "bg-primary"
+          : weatherData.main.temp < 20
+          ? "blueGradient text-white"
+          : "bg-gradient-to-r from-[#FF512F] to-[#DD2476] text-white"
+      }  rounded-xl p-2 max-w-sm flex-wrap`}
     >
       {geoError ? (
         geoError === "User denied Geolocation" ? (
@@ -36,7 +37,7 @@ const WetherWidget = () => {
             onClick={() => navigator.geolocation.getCurrentPosition(() => {})}
             accessability="click to allow access to location then refresh the page."
           >
-            click to allow access to location then refresh the page.
+            click to allow access to location then refresh the page. weather Widget
           </Button>
         ) : (
           geoError
@@ -77,7 +78,7 @@ const WetherWidget = () => {
           </div>
         </>
       )}
-    </div>
+    </section>
   );
 };
 

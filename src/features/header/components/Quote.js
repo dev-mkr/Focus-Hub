@@ -15,17 +15,9 @@ const Quote = () => {
   }
 
   return (
-    <>
-      {isLoading ? (
-        "Loading..."
-      ) : error ? (
-        error
-      ) : (
-        <blockquote className="p-3 bg-primary/50 font-semibold text-base/70 text-lg shadow-md rounded-xl">
-          {quote}
-        </blockquote>
-      )}
-    </>
+    <blockquote className="p-3 ml-3 bg-primary/50 font-semibold text-base/70 text-lg shadow-md rounded-xl">
+      {isLoading ? "Loading..." : error ? error : quote}
+    </blockquote>
   );
 };
 export default Quote;

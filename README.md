@@ -20,7 +20,7 @@
 * Quran radio streams 
 
 ### Upcoming Features:
-* customize reciters list by user -adding there favorits-
+* customize reciters list by users -adding there favorits-
 * web Extinction 
 ### Upcoming enhancements for developer experience:
 * Adding unit-testing

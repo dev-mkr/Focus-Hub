@@ -29,7 +29,6 @@ const useFetch = (urlParam) => {
         setIsLoading(true);
 
         try {
-          console.log("api called");
           const resp = await fetch(url, { signal: abortController.signal });
           //💡 handel response different types
           resp.headers.get("content-type") === "application/json; charset=utf-8"

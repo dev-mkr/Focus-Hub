@@ -7,7 +7,6 @@ const useAudio = (url) => {
   useEffect(() => {
     if (url) {
       const playPromise = audio.current.play();
-      console.log(playPromise);
       !isPlaying &&
         playPromise !== undefined &&
         playPromise
@@ -16,7 +15,7 @@ const useAudio = (url) => {
           })
           .catch((error) => {});
     }
-  }, [isPlaying]);
+  }, [url, isPlaying]);
 
   useEffect(() => {
     audio.current.src = url;
@@ -24,7 +23,6 @@ const useAudio = (url) => {
     url && audio.current.paused && audio.current.play();
   }, [url]);
   const changeVolume = (volume) => (audio.current.volume = volume);
-  console.log({ isPlaying }, audio.current.played, audio.current.paused);
   // useEffect(() => {
   //   audio.addEventListener("ended", () => setIsPlaying(false));
   //   return () => {

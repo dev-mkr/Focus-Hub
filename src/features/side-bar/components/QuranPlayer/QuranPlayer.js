@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import quranRadioUrls from "data/quranRadioUrls.json";
 import useAudio from "Hooks/useAudio";
 import ReciterList from "./components/RecitersList";

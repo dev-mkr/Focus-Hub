@@ -50,9 +50,6 @@ const useRequest = () => {
   const callApi = async (url, method, headers, body) => {
     let data;
     setIsLoading(true);
-
-    console.log("api called");
-
     try {
       const resp = await fetch(url, {
         method: method,

@@ -57,7 +57,7 @@ const PomodoroComponent = ({
     totalTime.current = time;
   };
   return (
-    <section className="w-full flex items-center justify-center flex-col ">
+    <section className="flex items-center justify-center flex-col ">
       <TimeOptions handelClick={handelTimeOptionClick} />
       <div className="relative">
         <DisplayTimer

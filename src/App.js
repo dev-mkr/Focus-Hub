@@ -10,9 +10,7 @@ function App() {
     document.documentElement.classList.toggle(`dark-theme`);
   }
   return (
-    <div
-      className={`h-screen bg-primary text-base transition-[transition: color 350ms ease 0s, background 350ms ease 0s;]`}
-    >
+    <div className="h-screen bg-primary text-base">
       <Home />
       <ToastContainer
         position="top-right"

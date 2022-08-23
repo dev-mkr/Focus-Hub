@@ -15,7 +15,7 @@ const Quote = () => {
   }
 
   return (
-    <blockquote className="p-3 ml-3 bg-primary/50 font-semibold text-base/70 text-lg shadow-md rounded-xl">
+    <blockquote className="p-3 sm:ml-3 bg-primary/50 font-semibold text-base/70 text-lg shadow-md rounded-xl">
       {isLoading ? "Loading..." : error ? error : quote}
     </blockquote>
   );

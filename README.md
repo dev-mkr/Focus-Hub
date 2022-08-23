@@ -16,7 +16,7 @@
 * Dark mood with switch sounds✨, saved in localStorage
 * Weather widget
 * Quote widget  
-* Pomodoro timer with browser  notifications with quotes
+* Pomodoro timer with browser notifications and quotes
 * Quran radio streams 
 
 ### Upcoming Features:

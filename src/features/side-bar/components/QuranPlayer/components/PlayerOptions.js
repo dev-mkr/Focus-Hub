@@ -49,7 +49,7 @@ const PlayerOptions = ({
         >
           <Random className="w-6" />
         </Button>
-        <span className="rtl flex-1 max-h-14 overflow-clip">
+        <span className="rtl flex-1 max-h-12 overflow-clip">
           {!reciterName ? "Please select an audio to stream" : reciterName}
         </span>
       </div>

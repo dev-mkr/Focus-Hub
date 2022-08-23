@@ -7,14 +7,8 @@
   
 <h3 align="center"> Focus Hub is an open‑source Productivity tool. powered by Reactjs, React hooks, react-beautifull-dnd, tailwindcss, custom hooks, Fetch API and more.</h3> 
 
- # todo
- - [ ] skeleton loader
- - [ ] draggable sidebar items
- - [ ] pomodoro timer
- - [ ] prayer time
- - [ ] quran player
- # Featuers
-### Main Features✨
+
+# Main Features✨
 * Drag and drop Kanban Board
 * Full crud operations saved in localStorage
 * Editable task content

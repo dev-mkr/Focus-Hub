@@ -58,7 +58,7 @@ const WetherWidget = () => {
           </p>
           <div>
             <img
-              className="w-24"
+              className="w-24 m-auto"
               src={`${iconPath}${weatherData.weather[0].icon}.svg`}
               alt="Wether condition icon"
               aria-label="Wether condition icon"

@@ -25,18 +25,24 @@ const PlayerOptions = ({
       >
         {isPlaying ? <PauseIcon className="w-12" /> : <PlayIcon className="w-12" />}
       </Button>
-      <div className="flex grow flex-row flex-nowrap items-center  text-end flex-wrap gap-x-3">
-        <label htmlFor="volume" className="group relative" title="Adjust the volume">
+      <div className="flex grow flex-row flex-nowrap items-center  text-end flex-wrap gap-x-3 relative">
+        <label
+          htmlFor="volume"
+          className="group relative flex items-center h-full"
+          title="Adjust the volume"
+        >
           <Volume className="w-6" />
-          <input
-            type="range"
-            onChange={(e) => changeVolume(e.target.value)}
-            name="volume"
-            min="0"
-            max="1"
-            step="0.05"
-            className="range-input absolute left-2/4 top-[-7px] rotate-[-90deg] scale-x-0 transition-transform origin-left group-hover:scale-x-100"
-          />
+          <span className="bg-gray-200/70 absolute flex justify-center bottom-16 left-[-25px] rounded-2xl p-2 rotate-[-90deg] scale-x-0  group-hover:scale-x-100">
+            <input
+              type="range"
+              onChange={(e) => changeVolume(e.target.value)}
+              name="volume"
+              min="0"
+              max="1"
+              step="0.05"
+              className="range-input"
+            />
+          </span>
         </label>
         <Button
           onClick={() => {

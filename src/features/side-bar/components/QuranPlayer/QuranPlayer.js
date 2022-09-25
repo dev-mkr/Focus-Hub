@@ -1,15 +1,17 @@
-import React, { useState } from "react";
-import quranRadioUrls from "data/quranRadioUrls.json";
+import React, { useState, Suspense, lazy } from "react";
 import useAudio from "Hooks/useAudio";
-import ReciterList from "./components/RecitersList";
 import PlayerOptions from "./components/PlayerOptions";
+const RecitersList = lazy(() => import("./components/RecitersList"));
 
 const QuranPlayer = () => {
   const [reciter, setReciter] = useState();
   const [isPlaying, togglePlayback, changeVolume] = useAudio(reciter?.url);
+
   return (
     <section className="relative h-[22rem] overflow-hidden">
-      <ReciterList quranRadioUrls={quranRadioUrls} setReciter={setReciter} />
+      <Suspense fallback={<div className="text-center">Loading...</div>}>
+        <RecitersList setReciter={setReciter} />
+      </Suspense>
       <PlayerOptions
         togglePlayback={togglePlayback}
         reciterUrl={reciter?.url}

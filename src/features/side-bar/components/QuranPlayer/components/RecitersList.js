@@ -1,7 +1,8 @@
 import React from "react";
 import Button from "components/Button";
+import quranRadioUrls from "data/quranRadioUrls.json";
 
-const ReciterList = ({ quranRadioUrls, setReciter }) => {
+const ReciterList = ({ setReciter }) => {
   return (
     <ul
       dir="rtl"

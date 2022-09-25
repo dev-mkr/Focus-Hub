@@ -37,7 +37,7 @@
     --color-secondary: 31 33 35;
     --color-border: 43 45 46;
     --color-text-base: 255 255 255;
-    @apply bg-primary; 
+    @apply bg-primary;
     /* the background color of the root itself "it created for overscroll"*/
     scrollbar-color: #606060 #393939;
     scrollbar-width: thin;
@@ -93,5 +93,21 @@
     width: 60px !important;
     height: 6px !important;
     cursor: pointer;
+  }
+  .spinner {
+    @apply h-8 w-8;
+    border-radius: 50%;
+    background: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 212, 255, 0.8214636196275386) 100%
+    );
+    animation: spinner-c7wet2 1s infinite linear;
+  }
+
+  @keyframes spinner-c7wet2 {
+    100% {
+      transform: rotate(1turn);
+    }
   }
 }

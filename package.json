@@ -13,12 +13,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "npm run build:css && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "sr": "json-server --watch  db.json",
-    "watch:css": "tailwindcss -i src/styles/tailwind.css -o src/styles/main.css -w",
-    "build:css": "tailwindcss -i  src/styles/tailwind.css -o src/styles/main.css"
+    "sr": "json-server --watch  db.json"
   },
   "eslintConfig": {
     "extends": [

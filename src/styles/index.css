@@ -37,7 +37,8 @@
     --color-secondary: 31 33 35;
     --color-border: 43 45 46;
     --color-text-base: 255 255 255;
-    @apply bg-primary;
+    @apply bg-primary; 
+    /* the background color of the root itself "it created for overscroll"*/
     scrollbar-color: #606060 #393939;
     scrollbar-width: thin;
     --scrollbar-width: 10px;

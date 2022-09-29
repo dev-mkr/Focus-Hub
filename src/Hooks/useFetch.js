@@ -37,7 +37,6 @@ const useFetch = (urlParam) => {
 
           setApiData(data);
           if (error) {
-            console.error(error);
             setError(false);
           }
         } catch (error) {
